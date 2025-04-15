@@ -1,59 +1,37 @@
-# AngularPracticeCourse
+# 📚 Projeto de Estudos em Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+Este repositório foi criado para acompanhar meu progresso no estudo do **Angular**, um framework front-end poderoso para o desenvolvimento de aplicações web modernas e escaláveis.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✅ Checklist de Conceitos Estudados e a Estudar
 
-```bash
-ng serve
-```
+### Conceitos já estudados:
+- [x] `*ngIf`
+- [x] `*ngFor`
+- [x] `(click)`
+- [x] Two-way data binding (`[(ngModel)]`)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Conceitos a estudar:
+- [ ] Componentes (criação, organização, input/output)
+- [ ] Diretivas estruturais e de atributos
+- [ ] Pipes (customizados e built-in)
+- [ ] Services e Injeção de Dependência
+- [ ] HttpClient e chamadas HTTP
+- [ ] Roteamento (RouterModule, rotas com parâmetros, lazy loading)
+- [ ] Forms (Template-driven e Reactive Forms)
+- [ ] Observables e RxJS
+- [ ] Lifecycle Hooks (ngOnInit, ngOnDestroy, etc.)
+- [ ] Angular CLI (comandos úteis e boas práticas)
+- [ ] Testes unitários e de integração
+- [ ] Boas práticas e arquitetura de projetos Angular
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📝 Resumo dos Conceitos Estudados
 
-```bash
-ng generate component component-name
-```
+### `*ngIf`
+A diretiva `*ngIf` permite mostrar ou esconder elementos HTML com base em uma condição booleana. É útil para renderizar conteúdo dinamicamente conforme o estado da aplicação.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```html
+<div *ngIf="isLoggedIn">Bem-vindo(a)!</div>
