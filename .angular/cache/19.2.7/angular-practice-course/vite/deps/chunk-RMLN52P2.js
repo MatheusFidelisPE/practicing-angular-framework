@@ -1,4 +1,8 @@
 import {
+  DOCUMENT,
+  isPlatformBrowser
+} from "./chunk-ZTNQHJPU.js";
+import {
   ApplicationRef,
   Attribute,
   ChangeDetectorRef,
@@ -60,10 +64,7 @@ import {
   ɵɵinject,
   ɵɵinjectAttribute,
   ɵɵstyleProp
-} from "./chunk-MZXBCJ3N.js";
-
-// node_modules/@angular/common/fesm2022/dom_tokens-rA0ACyx7.mjs
-var DOCUMENT = new InjectionToken(ngDevMode ? "DocumentToken" : "");
+} from "./chunk-MHQIP2VU.js";
 
 // node_modules/@angular/common/fesm2022/location-DpBxd_aX.mjs
 var _DOM = null;
@@ -2001,20 +2002,20 @@ var NgClass = class _NgClass {
   The NgClass directive uses the custom change detection algorithm for its inputs. The custom
   algorithm is necessary since inputs are represented as complex object or arrays that need to be
   deeply-compared.
-      This algorithm is perf-sensitive since NgClass is used very frequently and its poor performance
+     This algorithm is perf-sensitive since NgClass is used very frequently and its poor performance
   might negatively impact runtime performance of the entire change detection cycle. The design of
   this algorithm is making sure that:
   - there is no unnecessary DOM manipulation (CSS classes are added / removed from the DOM only when
   needed), even if references to bound objects change;
   - there is no memory allocation if nothing changes (even relatively modest memory allocation
   during the change detection cycle can result in GC pauses for some of the CD cycles).
-      The algorithm works by iterating over the set of bound classes, staring with [class] binding and
+     The algorithm works by iterating over the set of bound classes, staring with [class] binding and
   then going over [ngClass] binding. For each CSS class name:
   - check if it was seen before (this information is tracked in the state map) and if its value
   changed;
   - mark it as "touched" - names that are not marked are not present in the latest set of binding
   and we can remove such class name from the internal data structures;
-      After iteration over all the CSS class names we've got data structure with all the information
+     After iteration over all the CSS class names we've got data structure with all the information
   necessary to synchronize changes to the DOM - it is enough to iterate over the state map, flush
   changes to the DOM and reset internal data structures so those are ready for the next change
   detection cycle.
@@ -3645,29 +3646,6 @@ var CommonModule = class _CommonModule {
   }], null, null);
 })();
 
-// node_modules/@angular/common/fesm2022/xhr-BfNfxNDv.mjs
-function parseCookieValue(cookieStr, name) {
-  name = encodeURIComponent(name);
-  for (const cookie of cookieStr.split(";")) {
-    const eqIndex = cookie.indexOf("=");
-    const [cookieName, cookieValue] = eqIndex == -1 ? [cookie, ""] : [cookie.slice(0, eqIndex), cookie.slice(eqIndex + 1)];
-    if (cookieName.trim() === name) {
-      return decodeURIComponent(cookieValue);
-    }
-  }
-  return null;
-}
-var PLATFORM_BROWSER_ID = "browser";
-var PLATFORM_SERVER_ID = "server";
-function isPlatformBrowser(platformId) {
-  return platformId === PLATFORM_BROWSER_ID;
-}
-function isPlatformServer(platformId) {
-  return platformId === PLATFORM_SERVER_ID;
-}
-var XhrFactory = class {
-};
-
 // node_modules/@angular/common/fesm2022/platform_navigation-B45Jeakb.mjs
 var PlatformNavigation = class _PlatformNavigation {
   static ɵfac = function PlatformNavigation_Factory(__ngFactoryType__) {
@@ -5029,7 +5007,6 @@ function booleanOrUrlAttribute(value) {
 }
 
 export {
-  DOCUMENT,
   getDOM,
   setRootDomAdapter,
   DomAdapter,
@@ -5105,12 +5082,6 @@ export {
   CurrencyPipe,
   SlicePipe,
   CommonModule,
-  parseCookieValue,
-  PLATFORM_BROWSER_ID,
-  PLATFORM_SERVER_ID,
-  isPlatformBrowser,
-  isPlatformServer,
-  XhrFactory,
   PlatformNavigation,
   registerLocaleData2 as registerLocaleData,
   VERSION,
@@ -5127,13 +5098,6 @@ export {
 };
 /*! Bundled license information:
 
-@angular/common/fesm2022/dom_tokens-rA0ACyx7.mjs:
-  (**
-   * @license Angular v19.2.6
-   * (c) 2010-2025 Google LLC. https://angular.io/
-   * License: MIT
-   *)
-
 @angular/common/fesm2022/location-DpBxd_aX.mjs:
   (**
    * @license Angular v19.2.6
@@ -5142,13 +5106,6 @@ export {
    *)
 
 @angular/common/fesm2022/common_module-CBrzkrmd.mjs:
-  (**
-   * @license Angular v19.2.6
-   * (c) 2010-2025 Google LLC. https://angular.io/
-   * License: MIT
-   *)
-
-@angular/common/fesm2022/xhr-BfNfxNDv.mjs:
   (**
    * @license Angular v19.2.6
    * (c) 2010-2025 Google LLC. https://angular.io/
@@ -5169,4 +5126,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-I373OZEJ.js.map
+//# sourceMappingURL=chunk-RMLN52P2.js.map
