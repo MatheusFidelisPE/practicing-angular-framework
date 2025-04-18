@@ -3,6 +3,7 @@
     <div class="col-12 text-center">
         <div class="col-md4">
             <div class="btn-group">
+                <!-- o ngClass é para manipular a classe do componente -->
                 <button type="button" class="btn" [ngClass]="currentComponent == 'Roles'? 'btn-success':'btn-light'" (click)="changeTab('Roles')">Roles</button>
                 <button type="button" class="btn" [ngClass]="currentComponent == 'Designation'? 'btn-success':'btn-light'" (click)="changeTab('Designation')">Designation</button>
               </div>
@@ -15,8 +16,12 @@
         <app-roles>
         </app-roles>
     </div>
+    
     <div class="col-12" *ngIf="currentComponent == 'Designation'">
         <app-designation>    
         </app-designation>
+    </div>
+    <div class="col-md-6 offset-md-3" *ngIf="currentComponent == ''">
+        <h1>Escolha entre Roles e Designation</h1>
     </div>
 </div>
