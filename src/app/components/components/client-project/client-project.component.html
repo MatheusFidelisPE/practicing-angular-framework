@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-6">
                             <label for="">Expected End Date</label>
-                            <textarea type="date" class="form-control" formControlName="expectedEndDate"></textarea>
+                            <input type="date" class="form-control" formControlName="expectedEndDate">
                         </div>
                         <div class="col-6">
                             <label for="">Contact Name</label>
@@ -74,7 +74,7 @@
                             <label for="">Project Costing</label>
                             <input type="text"  class="form-control" formControlName="projectCost">
                         </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <label for="">Project Description</label>
                             <textarea class="form-control" formControlName="projectDetails" ></textarea>
                         </div>
@@ -82,14 +82,19 @@
                             <label for="">Select Client</label>
                             <select class="form-control" formControlName="clientId">
                                 <option>Select Client</option>
+                                @for (item of clientList; track $index) {
+                                    <option [value]="item.clientId">{{item.companyName}}</option>
+                                }
                             </select>
                         </div>
                         <div class="col-6">
                             <label for="">Lead By</label>
                             <select class="form-control" formControlName="leadByEmpId">
                                 <option>Select Employee</option>
+                                @for (item of employeeList; track $index) {
+                                    <option [value]="item.empId">{{item.empName}} - {{item.empCode}}</option>
+                                }
                             </select>
-                            <input type="text" class="form-control" >
                         </div>
                     </div>
                     <div class="row pt-2">
@@ -97,7 +102,7 @@
                             <button class="btn btn-secondary">Reset</button>
                         </div>
                         <div class="col-6 text-center">
-                          <button class="btn btn-success">
+                          <button class="btn btn-success" (click)="onSaveProject()">
                             Save Project Client
                         </button>
                         </div>

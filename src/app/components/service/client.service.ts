@@ -31,6 +31,11 @@ export class ClientService {
    getAllEmployees():Observable<ApiResponseModel>{
     return this
             .http
-            .get<ApiResponseModel>(environment.API_EMPLOYEE_URL+"GetAllEmployees");
+            .get<ApiResponseModel>(environment.API_EMPLOYEE_URL+"GetAllEmployee");
+   }
+   addClientProject(obj:Client):Observable<ApiResponseModel>{
+    return this
+            .http
+            .post<ApiResponseModel>(environment.API_CLIENT_URL+"AddUpdateClientProject", obj);
    }
 }

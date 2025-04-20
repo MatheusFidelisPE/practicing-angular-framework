@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ClientService } from '../../service/client.service';
+import { ApiResponseModel, IEmployee } from '../../../model/class/interface/role';
+import { Client } from '../../../model/class/Client';
 
 
 @Component({
@@ -8,11 +11,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './client-project.component.html',
   styleUrl: './client-project.component.css'
 })
-export class ClientProjectComponent {
+export class ClientProjectComponent implements OnInit {
+  hojer: Date = new Date();
   projectForm:FormGroup = new FormGroup({
     clientProjectId:        new FormControl(0),
     projectName:            new FormControl("MMMM"),
-    startDate:              new FormControl(""),
+    startDate:              new FormControl(this.hojer.toISOString().split('T')[0]),
     expectedEndDate:        new FormControl(""),
     leadByEmpId:            new FormControl(""),
     completedDate:          new FormControl(""),
@@ -24,6 +28,42 @@ export class ClientProjectComponent {
     contactPersonEmailId:   new FormControl(""),
     clientId:               new FormControl("")
   });
+  clientService = inject(ClientService);
+  employeeList: IEmployee[] = [];
+  clientList: Client[] = [];
+  
+  ngOnInit(): void {
+    this.getAllEmployee();
+    this.getAllClients();
+  }
+
+  getAllEmployee(){
+    this.clientService.getAllEmployees().subscribe((response: ApiResponseModel) => {
+      if(response.result){
+        this.employeeList = response.data;
+      }
+    });
+  }
+  getAllClients(){
+    this.clientService.getAllClients().subscribe((response: ApiResponseModel) => {
+      if(response.result){
+        this.clientList = response.data;
+      }
+    });
+  }
+  onSaveProject(){
+    const formValue = this.projectForm.value;
+    debugger;
+    this.clientService.addClientProject(formValue).subscribe((response: ApiResponseModel) => {
+      if(response.result){
+        alert(response.message);
+        this.projectForm.reset();
+      }else{
+        alert(response.message);
+      }
+    });  
+  }
+
 
 }
 
