@@ -40,56 +40,56 @@
                 New Client
             </div>
             <div class="card-body">
-                <form>
+                <form [formGroup]="projectForm">
                     <div class="row">
                         <div class="col-6">
                             <label for="">Project Name</label>
-                            <input required minlength=3 type="text"  class="form-control" name="contactPersonName">              
+                            <input type="text" class="form-control" formControlName="projectName" >              
                         </div>
                         <div class="col-6">
                             <label for="">Start Date</label>
-                            <input type="date"  class="form-control" name="companyName">
+                            <input type="date"  class="form-control" formControlName="startDate" >
                         </div>
                         <div class="col-6">
                             <label for="">Expected End Date</label>
-                            <textarea type="date" class="form-control" name="address"></textarea>
+                            <textarea type="date" class="form-control" formControlName="expectedEndDate"></textarea>
                         </div>
                         <div class="col-6">
                             <label for="">Contact Name</label>
-                            <input type="text"  class="form-control" name="city">
+                            <input type="text"  class="form-control" formControlName="contactPerson" >
                         </div>
                         <div class="col-6">
                             <label for="">Contact Mobile</label>
-                            <input type="text"  class="form-control" name="pincode">
+                            <input type="text"  class="form-control" formControlName="contactPersonContactNo">
                         </div>
                         <div class="col-6">
                             <label for="">Contact Email</label>
-                            <input type="text"  class="form-control" name="state">
+                            <input type="text"  class="form-control" formControlName="contactPersonEmailId" >
                         </div>
                         <div class="col-6">
                             <label for="">Total Employee Count</label>
-                            <input type="number"  class="form-control" name="employeeStrength">
+                            <input type="number"  class="form-control" formControlName="totalEmpWorking">
                         </div>
                         <div class="col-6">
                             <label for="">Project Costing</label>
-                            <input type="text"  class="form-control" name="gstNo">
+                            <input type="text"  class="form-control" formControlName="projectCost">
                         </div>
                         <div class="col-6">
                             <label for="">Project Description</label>
-                            <textarea class="form-control" name="contactNo"></textarea>
+                            <textarea class="form-control" formControlName="projectDetails" ></textarea>
                         </div>
                         <div class="col-6">
-                            <label for="">Project Costing</label>
-                            <select class="form-control">
+                            <label for="">Select Client</label>
+                            <select class="form-control" formControlName="clientId">
                                 <option>Select Client</option>
                             </select>
                         </div>
                         <div class="col-6">
                             <label for="">Lead By</label>
-                            <select class="form-control">
-                                <option>Select Employee/option>
+                            <select class="form-control" formControlName="leadByEmpId">
+                                <option>Select Employee</option>
                             </select>
-                            <input type="text" class="form-control" name="regNo">
+                            <input type="text" class="form-control" >
                         </div>
                     </div>
                     <div class="row pt-2">
