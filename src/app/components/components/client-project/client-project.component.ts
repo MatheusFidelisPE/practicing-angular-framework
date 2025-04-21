@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientService } from '../../service/client.service';
 import { ApiResponseModel, IEmployee } from '../../../model/class/interface/role';
 import { Client } from '../../../model/class/Client';
@@ -15,7 +15,7 @@ export class ClientProjectComponent implements OnInit {
   hojer: Date = new Date();
   projectForm:FormGroup = new FormGroup({
     clientProjectId:        new FormControl(0),
-    projectName:            new FormControl("MMMM"),
+    projectName:            new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]),
     startDate:              new FormControl(this.hojer.toISOString().split('T')[0]),
     expectedEndDate:        new FormControl(""),
     leadByEmpId:            new FormControl(""),

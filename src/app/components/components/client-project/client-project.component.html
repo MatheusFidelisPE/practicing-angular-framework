@@ -44,7 +44,17 @@
                     <div class="row">
                         <div class="col-6">
                             <label for="">Project Name</label>
-                            <input type="text" class="form-control" formControlName="projectName" >              
+                            <input type="text" class="form-control" formControlName="projectName" >
+                            @if (projectForm.controls['projectName'].touched) {
+                                <div class="text-danger">
+                                    @if (projectForm.controls['projectName'].errors?.['required']) {
+                                        <span>Project Name is required</span>
+                                    }
+                                    @if (projectForm.controls['projectName'].errors?.['minlength']) {
+                                        <span>Project Name should be minimum 5 characters</span>
+                                    }
+                                </div>              
+                            }
                         </div>
                         <div class="col-6">
                             <label for="">Start Date</label>
@@ -102,7 +112,7 @@
                             <button class="btn btn-secondary">Reset</button>
                         </div>
                         <div class="col-6 text-center">
-                          <button class="btn btn-success" (click)="onSaveProject()">
+                          <button class="btn btn-success" [disabled]="projectForm.invalid" (click)="onSaveProject()">
                             Save Project Client
                         </button>
                         </div>
