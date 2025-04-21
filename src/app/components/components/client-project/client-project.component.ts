@@ -1,17 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientService } from '../../service/client.service';
-import { ApiResponseModel, IEmployee } from '../../../model/class/interface/role';
+import { ApiResponseModel, IClientProject, IEmployee } from '../../../model/class/interface/role';
 import { Client } from '../../../model/class/Client';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-client-project',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
+
   templateUrl: './client-project.component.html',
   styleUrl: './client-project.component.css'
 })
 export class ClientProjectComponent implements OnInit {
+
   hojer: Date = new Date();
   projectForm:FormGroup = new FormGroup({
     clientProjectId:        new FormControl(0),
@@ -31,12 +34,19 @@ export class ClientProjectComponent implements OnInit {
   clientService = inject(ClientService);
   employeeList: IEmployee[] = [];
   clientList: Client[] = [];
-  
+  firstName = signal("Valor");
+  projectList = signal<IClientProject[]>([]);
+
   ngOnInit(): void {
+
+    const name = this.firstName();
     this.getAllEmployee();
     this.getAllClients();
+    this.getAllClientProjects();
   }
-
+  changeFName() {
+    this.firstName.set("ReactJs")
+  }
   getAllEmployee(){
     this.clientService.getAllEmployees().subscribe((response: ApiResponseModel) => {
       if(response.result){
@@ -48,6 +58,14 @@ export class ClientProjectComponent implements OnInit {
     this.clientService.getAllClients().subscribe((response: ApiResponseModel) => {
       if(response.result){
         this.clientList = response.data;
+      }
+    });
+  }
+  getAllClientProjects(){
+    
+    this.clientService.getAllClientProject().subscribe((response: ApiResponseModel) => {
+      if(response.result){
+        this.projectList.set(response.data);
       }
     });
   }
