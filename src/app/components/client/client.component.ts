@@ -5,10 +5,12 @@ import { ClientService } from '../service/client.service';
 import { ApiResponseModel } from '../../model/class/interface/role';
 import { AsyncPipe, DatePipe, JsonPipe, UpperCasePipe } from '@angular/common';
 import { Observable } from 'rxjs';
+import { AlertComponent } from '../../reusableComponent/alert/alert.component';
+import { MyByttonComponent } from '../../reusableComponent/my-bytton/my-bytton.component';
 
 @Component({
   selector: 'app-client',
-  imports: [FormsModule, UpperCasePipe, DatePipe, JsonPipe, AsyncPipe],
+  imports: [FormsModule, UpperCasePipe, DatePipe, JsonPipe, AsyncPipe, AlertComponent, MyByttonComponent],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })
@@ -33,7 +35,8 @@ export class ClientComponent implements OnInit {
     });
   }
 
-  onSaveClient(){
+  onSaveClient(data:Event){
+    debugger;
     this.clientService.addUpdate(this.clientObject).subscribe((res:ApiResponseModel) => {
       if(res.result){
        alert("Client created successfully");

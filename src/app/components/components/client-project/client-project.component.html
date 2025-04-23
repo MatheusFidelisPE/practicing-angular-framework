@@ -1,10 +1,12 @@
 <div class="row">
+    <app-alert [alertType]="'success'" [message]="'Ola! Aqui está uma mensagem ok!'"></app-alert>
     <div class="col-8">
         <div class="card">
             <div class="card-header bg-success">
                 Client List - {{firstName()}}
                 <button class="btn btn-danger" (click)="changeFName()">Change F Name</button>
             </div>
+            
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
