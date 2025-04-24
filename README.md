@@ -35,3 +35,6 @@ A diretiva `*ngIf` permite mostrar ou esconder elementos HTML com base em uma co
 
 ```html
 <div *ngIf="isLoggedIn">Bem-vindo(a)!</div>
+
+
+alteração básica para ver se o git muda 
