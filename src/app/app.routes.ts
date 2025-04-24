@@ -5,6 +5,7 @@ import { ClientComponent } from './components/client/client.component';
 import { ClientProjectComponent } from './components/components/client-project/client-project.component';
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { TodolistComponent } from './components/todolist/todolist.component';
 
 export const routes: Routes = [
     // {
@@ -23,6 +24,10 @@ export const routes: Routes = [
             {
                 path: 'master',
                 component: MasterComponent
+            },
+            {
+                path: 'todo-list',
+                component: TodolistComponent
             }, 
             { 
                 path: 'employee',
