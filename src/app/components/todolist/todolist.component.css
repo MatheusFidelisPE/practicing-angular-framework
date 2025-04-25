@@ -5,3 +5,7 @@
   height: 1px;
   background: #eee;
 }
+.text-riscado {
+  text-decoration: line-through;
+  color: red;
+}
