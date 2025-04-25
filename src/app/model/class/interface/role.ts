@@ -35,3 +35,9 @@ export interface IEmployee{
     empDesignation: string;
     role: string;
 }
+
+export interface ITodoList{
+    status: boolean;
+    description: string;
+    realizationDate: Date;
+}
