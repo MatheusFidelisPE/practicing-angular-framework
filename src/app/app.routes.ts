@@ -5,6 +5,8 @@ import { ClientComponent } from './components/client/client.component';
 import { ClientProjectComponent } from './components/components/client-project/client-project.component';
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { guardGuard } from './guard/guard.guard';
+import { PageErrorComponent } from './guard/components/page-error/page-error.component';
 
 export const routes: Routes = [
     // {
@@ -19,6 +21,7 @@ export const routes: Routes = [
     {   
         path:'', 
         component: LayoutComponent, 
+        canActivate: [guardGuard],
         children:[
             {
                 path: 'master',
@@ -30,12 +33,17 @@ export const routes: Routes = [
             }, 
             { 
                 path: 'client',
-                component: ClientComponent
+                component: ClientComponent,
+                
             }, 
             { 
                 path: 'client-project',
                 component: ClientProjectComponent
             }
         ]
+    },
+    {
+        path: '**',
+        component:PageErrorComponent
     }
 ];
