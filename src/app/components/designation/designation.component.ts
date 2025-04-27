@@ -1,7 +1,7 @@
 import { Component, inject, Inject, OnInit } from '@angular/core';
 import { MasterService } from '../../service/master.service';
 import { ApiResponseModel, IDesignation } from '../../model/class/interface/role';
-import { CarouselComponent } from '../../guard/components/carousel/carousel.component';
+import { CarouselComponent } from '../carousel/carousel.component';
 
 @Component({
   selector: 'app-designation',

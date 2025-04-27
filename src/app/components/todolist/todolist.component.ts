@@ -17,6 +17,6 @@ export class TodolistComponent implements OnInit{
     this.todoList.push({status:true,description:'minha descrição', realizationDate: new Date()});
     this.todoList.push({status:false,description:'minha descrição 2', realizationDate: new Date()})
   }
-
+  
   
 }

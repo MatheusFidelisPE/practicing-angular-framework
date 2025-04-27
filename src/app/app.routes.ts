@@ -6,7 +6,8 @@ import { ClientProjectComponent } from './components/components/client-project/c
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { guardGuard } from './guard/guard.guard';
-import { PageErrorComponent } from './guard/components/page-error/page-error.component';
+import { TodolistComponent } from './components/todolist/todolist.component';
+import { PageErrorComponent } from './components/page-error/page-error.component';
 
 export const routes: Routes = [
     // {
@@ -30,6 +31,10 @@ export const routes: Routes = [
             { 
                 path: 'employee',
                 component: EmployeeComponent
+            }, 
+            { 
+                path: 'todolist',
+                component: TodolistComponent
             }, 
             { 
                 path: 'client',
