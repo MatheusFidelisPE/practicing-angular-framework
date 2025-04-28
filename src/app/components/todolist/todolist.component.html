@@ -26,10 +26,15 @@
         </div>
     </div>
     <div class="col-4">
-        <form class="row g-3">
+        <form class="row g-3" (ngSubmit)="onSubmit(todoForm)" #todoForm="ngForm">
             <div class="col-12">
                 <label for="inputAddress" class="form-label">Descrição da Atividade</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Lavar os pratos...">
+                <input type="text" 
+                class="form-control"
+                 id="inputAddress"
+                 placeholder="Lavar os pratos..."
+                 [(ngModel)]="todoItem.description"
+                 name="description">
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -37,3 +42,4 @@
         </form>
     </div>
 </div>
+
