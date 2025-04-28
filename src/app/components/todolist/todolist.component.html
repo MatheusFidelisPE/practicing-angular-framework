@@ -7,12 +7,14 @@
                         <p class="mb-2"><span class="h2 me-2">Todo List</span> <span
                                 class="badge bg-danger">checklist</span></p>
                         <p class="text-muted pb-2">04/01/2020 • ML - 1321</p>
-
+                        <button class="btn btn-secondary" (click)="filterByClosed()">Fechados</button>
+                        <button class="btn btn-info" (click)="showAllTasks()">Todas</button>
                         <ul class="list-group rounded-0">
                             @for(item of todoList; track $index){
                             <div class="form-check d-flex align-items-center mb-2">
                                 <input class="form-check-input me-2" type="checkbox" id="example2"
-                                    [(ngModel)]="item.status">
+                                    [(ngModel)]="item.status"
+                                    (change)="updateList()">
                                 <label class="form-check-label" for="example2"
                                     [className]="item.status?'text-riscado':''">
                                     {{item.description}}

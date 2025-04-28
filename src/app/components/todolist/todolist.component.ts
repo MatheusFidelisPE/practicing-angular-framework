@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TodolistComponent implements OnInit{
   
+  realTodolist : ITodoList[] = [];
   todoList : ITodoList[] = [];
   todoItem = {
     status:false,
@@ -19,20 +20,30 @@ export class TodolistComponent implements OnInit{
     };
   countValue: number = 0; 
   ngOnInit(): void {
-    this.todoList.push({status:true,description:'minha descrição', realizationDate: new Date()});
-    this.todoList.push({status:false,description:'minha descrição 2', realizationDate: new Date()})
+    var tasksString = localStorage.getItem('tasks');
+    if(tasksString != null){
+      this.realTodolist = JSON.parse(tasksString);
+      this.todoList = this.realTodolist;
+    }
+  
   }
   onSubmit(todoForm:any):void{
     console.log('entrou no submit');
-    this.todoList.push(this.todoItem);
+    this.realTodolist.push(this.todoItem);
+    localStorage.setItem('tasks', JSON.stringify(this.realTodolist));
     this.todoItem = {
       status:false, 
       description: '', 
       realizationDate:new Date()
     };
-
   }
-  incrementValue(){
-    this.countValue++;
+  filterByClosed(){
+    this.todoList = this.realTodolist.filter(x => x.status);
+  }
+  showAllTasks(){
+    this.todoList = this.realTodolist;
+  }
+  updateList(){
+    localStorage.setItem('tasks', JSON.stringify(this.realTodolist));
   }
 }
