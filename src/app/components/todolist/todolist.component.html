@@ -9,6 +9,14 @@
                         <p class="text-muted pb-2">04/01/2020 • ML - 1321</p>
                         <button class="btn btn-secondary" (click)="filterByClosed()">Fechados</button>
                         <button class="btn btn-info" (click)="showAllTasks()">Todas</button>
+                        <button class="btn btn-primary" (click)="filterByOpen()">Abertos</button>
+                        <div class="row">
+                            <form  [formGroup]="dateFilterForm" (ngSubmit)="onFilterDate(dateFilterForm)">
+                                <label for="">Selecione uma data</label>
+                                <input type="date" class="form-control" formControlName="selectedDate">
+                                <button type="submit" class="btn btn-secondary">Submit</button>
+                            </form>
+                        </div>
                         <ul class="list-group rounded-0">
                             @for(item of todoList; track $index){
                             <div class="form-check d-flex align-items-center mb-2">
