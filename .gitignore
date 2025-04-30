@@ -1,1 +1,16 @@
-.angular/cache
+
+.angular/
+dist/
+out-tsc/
+
+node_modules/
+
+*.log
+
+.env
+.vscode/
+.idea/
+*.swp
+
+coverage/
+
