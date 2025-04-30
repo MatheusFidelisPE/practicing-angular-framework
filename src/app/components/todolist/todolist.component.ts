@@ -11,72 +11,71 @@ import { DeferBlockBehavior } from '@angular/core/testing';
   templateUrl: './todolist.component.html',
   styleUrl: './todolist.component.css'
 })
-export class TodolistComponent implements OnInit{
+export class TodolistComponent implements OnInit {
 
-  realTodolist : ITodoList[] = [];
-  todoList : ITodoList[] = [];
-  dateFilterForm:any;
+  realTodolist: ITodoList[] = [];
+  todoList: ITodoList[] = [];
+  dateFilterForm: any;
 
   todoItem = {
-    status:false,
-    description:'', 
-    realizationDate:new Date()
-    };
-  countValue: number = 0; 
-  constructor(private formBuilder:FormBuilder){}
+    status: false,
+    description: '',
+    realizationDate: new Date()
+  };
+  countValue: number = 0;
+  constructor(private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     var tasksString = localStorage.getItem('tasks');
-    if(tasksString != null){
+    if (tasksString != null) {
       this.realTodolist = JSON.parse(tasksString);
       this.todoList = this.realTodolist;
     }
     this.dateFilterForm = this.formBuilder.group({
-      selectedDate:['']
-      }
+      selectedDate: ['']
+    }
     );
   }
-  onSubmit(todoForm:any):void{
+  onSubmit(todoForm: any): void {
     console.log('entrou no submit');
     this.realTodolist.push(this.todoItem);
+    this.todoList = this.realTodolist;
     localStorage.setItem('tasks', JSON.stringify(this.realTodolist));
-    this.todoList.push(this.todoItem);
+    // this.todoList.push(this.todoItem);
     this.todoItem = {
-      status:false, 
-      description: '', 
-      realizationDate:new Date()
+      status: false,
+      description: '',
+      realizationDate: new Date()
     };
   }
-  filterByClosed(){
+  onFilterDate(dateFilterForm: FormGroup) {
+    const utcSelectedDate = new Date(dateFilterForm.value.selectedDate);
+    const utcSelectedBrDate = new Date(utcSelectedDate.getTime() + (3 * 60 * 60 * 1000));
+    
+
+    this.todoList = this
+      .realTodolist
+      .filter(
+        item => {
+          const utcDate = new Date(item.realizationDate);
+          const utcBrDate = new Date(utcDate.getTime() - (3 * 60 * 60 * 1000));
+          
+
+          return utcBrDate.getFullYear() === utcSelectedBrDate.getFullYear() &&
+            utcBrDate.getMonth() === utcSelectedBrDate.getMonth() &&
+            utcBrDate.getDate() === utcSelectedBrDate.getDate();
+        });
+  }
+  filterByClosed() {
     this.todoList = this.realTodolist.filter(x => x.status);
   }
-  showAllTasks(){
+  showAllTasks() {
     this.todoList = this.realTodolist;
   }
-  filterByOpen(){
+  filterByOpen() {
     this.todoList = this.realTodolist.filter(x => !x.status);
   }
-  updateList(){
+  updateList() {
     localStorage.setItem('tasks', JSON.stringify(this.realTodolist));
-  }
-  onFilterDate(dateFilterForm:FormGroup){
-    debugger;
-    const selectDateStr = dateFilterForm.value.selectedDate;
-    console.log('data string'+selectDateStr);
-    const selectedDate = new Date(selectDateStr);
-    console.log(selectedDate.getFullYear());
-    console.log(selectedDate.getMonth());
-    console.log(selectedDate.getDate());
-    this.todoList = this
-        .realTodolist
-        .filter(
-          item => { 
-            const itemDate = item.realizationDate;
-            debugger;
-            return itemDate.getFullYear() === selectedDate.getFullYear() &&
-                   itemDate.getMonth() === selectedDate.getMonth() &&
-                   itemDate.getDate() === selectedDate.getDate();
-            
-          });
   }
 
 }
