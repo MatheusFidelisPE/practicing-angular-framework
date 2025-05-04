@@ -8,6 +8,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { guardGuard } from './guard/guard.guard';
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { PageErrorComponent } from './components/page-error/page-error.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
     // {
@@ -44,6 +45,10 @@ export const routes: Routes = [
             { 
                 path: 'client-project',
                 component: ClientProjectComponent
+            },
+            {
+                path: 'rickAndMorty',
+                component: DashboardComponent
             }
         ]
     },
