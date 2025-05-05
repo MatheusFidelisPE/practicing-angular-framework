@@ -9,6 +9,7 @@ import { guardGuard } from './guard/guard.guard';
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { PageErrorComponent } from './components/page-error/page-error.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 
 export const routes: Routes = [
     // {
@@ -49,6 +50,10 @@ export const routes: Routes = [
             {
                 path: 'rickAndMorty',
                 component: DashboardComponent
+            }, 
+            {
+                path:'character-details/:id',
+                component: CharacterDetailsComponent
             }
         ]
     },

@@ -2,10 +2,11 @@ import { Component, inject, input, Input, OnInit } from '@angular/core';
 import { RickAndyMortyService } from '../../service/rick-andy-morty.service';
 import { ICharacter } from '../../model/class/interface/rickAndMorty';
 import { DatePipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [DatePipe],
+  imports: [DatePipe, RouterModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -15,6 +16,7 @@ export class DashboardComponent implements OnInit {
   nEpisodes: number= 0;
   nLocations: number = 0;
   firstCharacter!: ICharacter;
+  mostRelevantCharacters!: ICharacter[];
 
   rickAndyMortyService = inject(RickAndyMortyService);
   ngOnInit(): void {
@@ -27,6 +29,7 @@ export class DashboardComponent implements OnInit {
     this.rickAndyMortyService.getLocationCount().subscribe((data: number) => {
       this.nLocations = data;
     });
+    this.getTheMostRelevantCharacteres();
     this.getFirstCharacter();
 
   }
@@ -35,9 +38,12 @@ export class DashboardComponent implements OnInit {
     this.rickAndyMortyService.getFirstCharacter().subscribe((data: any) => {
       this.firstCharacter = data;
     });
-
   }
-
+  getTheMostRelevantCharacteres():void{
+    this.rickAndyMortyService.getTheMostRelevantCharacters().subscribe((data: any) => {
+      this.mostRelevantCharacters = data;
+    });
+  }
 
 
 

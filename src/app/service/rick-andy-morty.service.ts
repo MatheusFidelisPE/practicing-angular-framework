@@ -51,4 +51,12 @@ export class RickAndyMortyService {
       })
     );
   }
+  getTheMostRelevantCharacters():Observable<ICharacter[]>{
+    return this.httpClient.get<any>(environment.API_RICKANDMORTY_URL + 'character').pipe
+    (
+      map((response: any) => {
+        return response.results.filter((character: ICharacter) => character.episode.length > 1).slice(0, 15);
+      })
+    );
+  }
 }
