@@ -1,1 +1,17 @@
-<p>character-details works!</p>
+<div class="card">
+    <div class="card-body bg-light">
+        <div class="row">
+            <div class="col-8">
+                <h3>Detalhes do Personagem</h3>
+                <p>Nome: {{character.name}}</p>
+                <p>Espécie: {{character.species}}</p>
+                <p>Gênero: {{character.gender}}</p>
+                <p>Status: {{character.status}}</p>
+                <p>Origem: <a href="">{{character.origin.name}}</a></p>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <img [src]="character.image" [alt]="character.name" id="character-image-details">
+            </div>
+        </div>
+    </div>
+</div>

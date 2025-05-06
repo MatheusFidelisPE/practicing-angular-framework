@@ -59,4 +59,9 @@ export class RickAndyMortyService {
       })
     );
   }
+  getCharacterById(id: number): Observable<ICharacter> {
+    return this.httpClient
+    .get<ICharacter>(`${environment.API_RICKANDMORTY_URL}character/${id}`);
+  }
+
 }

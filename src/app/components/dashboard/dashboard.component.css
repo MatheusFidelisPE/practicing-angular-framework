@@ -18,3 +18,8 @@
 a {
     text-decoration: none;
 }
+
+#character-image{
+    width: auto;
+    height: 95%;    
+}
