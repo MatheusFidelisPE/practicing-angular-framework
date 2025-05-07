@@ -39,59 +39,69 @@
       </div>
     </div>
   </div>
-  <div class="row d-flex justify-content-around">
-    
+  <div class="row justify-content-end mt-3">
+    <div class="col-4">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Selecione o personagem</mat-label>
+        <input type="text" matInput [formControl]="searchByUsername" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let character of charactersFiltered | async" [value]="character">
+            {{ character }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
   </div>
-</div>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-8">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            Personagens mais populares
+  
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-8">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              Personagens mais populares
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Status</th>
-                <th scope="col">Espécie</th>
-                <th scope="col">Localização</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for(item of mostRelevantCharacters; track $index){
-              <tr>
-                <th scope="row"><a [routerLink]="['/character-details', item.id]">{{item.name}}</a></th>
-                <td>{{item.status}}</td>
-                <td>{{item.species}}</td>
-                <td>{{item.origin.name}}</td>
-              </tr>
-              }
-            </tbody>
-          </table>
-        </div>
-        <!-- <div class="card-footer">
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Espécie</th>
+                  <th scope="col">Localização</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for(item of mostRelevantCharacters; track $index){
+                <tr>
+                  <th scope="row"><a [routerLink]="['/character-details', item.id]">{{item.name}}</a></th>
+                  <td>{{item.status}}</td>
+                  <td>{{item.species}}</td>
+                  <td>{{item.origin.name}}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          <!-- <div class="card-footer">
 
             </div> -->
+        </div>
       </div>
-    </div>
-    <div class="col-4">
-      <div>
-        <div class="col-12">
-          <div class="card shadow">
-            <img [src]="firstCharacter.image" alt="" id="character-image">
-            <div class="card-body">
-              <span class="h6 icon-tertiary small"><span class="fas fa-medal me-2">
-                </span>{{firstCharacter.status}}</span>
-              <h3 class="h5 card-title mt-3">{{firstCharacter.name}}</h3>
+      <div class="col-4">
+        <div>
+          <div class="col-12">
+            <div class="card shadow">
+              <img [src]="firstCharacter.image" alt="" id="character-image">
+              <div class="card-body">
+                <span class="h6 icon-tertiary small"><span class="fas fa-medal me-2">
+                  </span>{{firstCharacter.status}}</span>
+                <h3 class="h5 card-title mt-3">{{firstCharacter.name}}</h3>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
