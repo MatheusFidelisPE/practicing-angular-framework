@@ -10,6 +10,7 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 import { PageErrorComponent } from './components/page-error/page-error.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import { BootstrapComponent } from './components/bootstrap/bootstrap.component';
 
 export const routes: Routes = [
     // {
@@ -56,6 +57,13 @@ export const routes: Routes = [
                 component: CharacterDetailsComponent
             }
         ]
+    },
+    {   
+        path: 'bootstrap',
+        component: BootstrapComponent,
+        data: {
+            title:'Autora Tours - Travel with us'
+        }
     },
     {
         path: '**',

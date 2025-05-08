@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MasterComponent } from './components/master/master.component';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { filter, mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,9 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
+
 export class AppComponent {
-  title = 'angular-practice-course';
+  
+  title = 'Aurora Tuors - Travel with us';
 }
