@@ -11,6 +11,7 @@ import { PageErrorComponent } from './components/page-error/page-error.component
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { BootstrapComponent } from './components/bootstrap/bootstrap.component';
+import { EscapeButtonComponent } from './components/escape-button/escape-button.component';
 
 export const routes: Routes = [
     // {
@@ -55,6 +56,10 @@ export const routes: Routes = [
             {
                 path:'character-details/:id',
                 component: CharacterDetailsComponent
+            },
+            {
+                path:'escape-button',
+                component: EscapeButtonComponent
             }
         ]
     },
